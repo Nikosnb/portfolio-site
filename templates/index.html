@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Full Stack Developer Portfolio</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+
+        header {
+            background: linear-gradient(90deg, #3456a0, #4d327d);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 50px;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        .services, .projects {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 25px;
+            margin: 15px;
+            border-radius: 15px;
+            width: 260px;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: #334155;
+        }
+
+        .card p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            background: #020617;
+        }
+
+        input, textarea {
+            width: 250px;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Hi, I'm a Full Stack Developer</h1>
+    <p>I build websites, AI systems, backend & databases</p>
+</header>
+
+<section>
+    <h2>My Services</h2>
+    <div class="services">
+
+        <div class="card">
+            🌐 Website Development
+            <p>Modern responsive websites</p>
+        </div>
+
+        <div class="card">
+            🤖 AI Chatbots
+            <p>Custom AI assistants & automation</p>
+        </div>
+
+        <div class="card">
+            ⚙️ Automation Tools
+            <p>Scripts & bots to save time</p>
+        </div>
+
+        <div class="card">
+            🗄️ Database Systems
+            <p>MySQL, MongoDB, secure data storage</p>
+        </div>
+
+        <div class="card">
+            🔙 Backend Development
+            <p>APIs with Python, Flask & Node.js</p>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <h2>My Projects</h2>
+    <div class="projects">
+
+        <div class="card">ChatGPT Clone (AI + Backend)</div>
+        <div class="card">Trading Bot with API</div>
+        <div class="card">User Login System (Database)</div>
+        <div class="card">Business Website with Admin Panel</div>
+
+    </div>
+</section>
+
+<section>
+    <h2>Contact Me</h2>
+
+   <form action="/send" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required><br>
+    <input type="email" name="email" placeholder="Your Email" required><br>
+    <textarea name="message" placeholder="Your Message" required></textarea><br>
+    <button type="submit">Send Message</button>
+</form>
+
+    <p>Email: mpampisnikolaos@yahoo.com</p>
+    <p>WhatsApp: +49 15215955766</p>
+</section>
+
+<footer>
+    <p>© 2026 Full Stack Developer</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+
+        header {
+            background: #020617;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+        }
+
+        .stat-box h2 {
+            margin: 0;
+            font-size: 28px;
+            color: #38bdf8;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: #334155;
+        }
+
+        .email {
+            color: #38bdf8;
+        }
+
+        .message {
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .empty {
+            text-align: center;
+            opacity: 0.6;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>ADMIN WORKS</h1>
+
+
+
+<header>
+    📊 Admin Dashboard
+</header>
+
+<div class="container">
+
+    <!-- 📊 Статистика -->
+    <div class="stats">
+        <div class="stat-box">
+            <h2>{{ messages|length }}</h2>
+            <p>Total Messages</p>
+        </div>
+
+        <div class="stat-box">
+            <h2>✔</h2>
+            <p>Status Active</p>
+        </div>
+
+        <div class="stat-box">
+            <h2>💬</h2>
+            <p>Clients</p>
+        </div>
+    </div>
+
+    <!-- 📩 Съобщения -->
+    {% if messages %}
+        {% for msg in messages %}
+        <div class="card">
+            <b>Name:</b> {{ msg[1] }} <br>
+            <b>Email:</b> <span class="email">{{ msg[2] }}</span>
+            
+            <div class="message">
+                {{ msg[3] }}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty">
+            No messages yet...
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
