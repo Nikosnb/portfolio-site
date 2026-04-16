@@ -1,24 +1,32 @@
 from flask import Flask, request, redirect, render_template
 import sqlite3
+import os
 
 app = Flask(__name__)
 
-# 📌 Създаване на база данни
-def init_db():
+# 📌 Функция за база
+def get_db_connection():
     conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
+    conn.row_factory = sqlite3.Row
+    return conn
 
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS messages (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            email TEXT,
-            message TEXT
-        )
-    ''')
+# 📌 Създаване на база ако я няма
+def init_db():
+    if not os.path.exists('database.db'):
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
 
-    conn.commit()
-    conn.close()
+        cursor.execute('''
+            CREATE TABLE messages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                email TEXT,
+                message TEXT
+            )
+        ''')
+
+        conn.commit()
+        conn.close()
 
 # 🏠 Начална страница
 @app.route('/')
@@ -32,7 +40,7 @@ def send():
     email = request.form['email']
     message = request.form['message']
 
-    conn = sqlite3.connect('database.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
 
     cursor.execute(
@@ -45,10 +53,10 @@ def send():
 
     return redirect('/')
 
-# 📊 ADMIN DASHBOARD (модерен)
+# 📊 ADMIN DASHBOARD
 @app.route('/admin')
 def admin():
-    conn = sqlite3.connect('database.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
 
     cursor.execute("SELECT * FROM messages ORDER BY id DESC")
@@ -58,7 +66,7 @@ def admin():
 
     return render_template('admin.html', messages=data)
 
-# ▶️ Стартиране
-if __name__ == '__main__':
+# 🚀 Стартиране
+if __name__ == "__main__":
     init_db()
     app.run(debug=True)
